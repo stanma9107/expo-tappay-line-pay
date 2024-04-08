@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-tappay-line-pay": ["../src/index"],
+      "expo-tappay-line-pay/*": ["../src/*"]
+    }
+  }
+}

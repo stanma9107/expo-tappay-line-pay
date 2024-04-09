@@ -27,12 +27,17 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
+          <string>expotappaylinepayexample</string>
           <string>dev.stanma.tappay.linepay.example</string>
         </array>
       </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>line</string>
+    </array>
     <key>LSRequiresIPhoneOS</key>
     <true/>
     <key>NSAppTransportSecurity</key>

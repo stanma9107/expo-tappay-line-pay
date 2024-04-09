@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "expo-tappay-line-pay-example",
+    "scheme": "expotappaylinepayexample",
     "slug": "expo-tappay-line-pay-example",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -27,6 +28,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "../app.plugin.js"
+    ]
   }
 }

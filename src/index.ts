@@ -24,6 +24,8 @@ export function getPrime(): Promise<string> {
   return ExpoTappayLinePayModule.getPrime();
 }
 
-export function redirect(paymentUrl: string): Promise<PaymentResult> {
+export function redirect(
+  paymentUrl: string,
+): Promise<ExpoTappayLinePayTypes.PaymentResult> {
   return ExpoTappayLinePayModule.redirect(paymentUrl);
 }

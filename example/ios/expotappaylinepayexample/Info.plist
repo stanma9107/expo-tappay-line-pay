@@ -27,6 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
+          <string>expotappaylinepayexample</string>
           <string>dev.stanma.tappay.linepay.example</string>
         </array>
       </dict>

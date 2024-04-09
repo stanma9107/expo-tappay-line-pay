@@ -1,44 +1,65 @@
 import ExpoModulesCore
+import TPDirect
+
+var linePay: TPDLinePay? = nil
 
 public class ExpoTappayLinePayModule: Module {
-  // Each module class must implement the definition function. The definition consists of components
-  // that describes the module's functionality and behavior.
-  // See https://docs.expo.dev/modules/module-api for more details about available components.
-  public func definition() -> ModuleDefinition {
-    // Sets the name of the module that JavaScript code will use to refer to the module. Takes a string as an argument.
-    // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
-    // The module will be accessible from `requireNativeModule('ExpoTappayLinePay')` in JavaScript.
-    Name("ExpoTappayLinePay")
-
-    // Sets constant properties on the module. Can take a dictionary or a closure that returns a dictionary.
-    Constants([
-      "PI": Double.pi
-    ])
-
-    // Defines event names that the module can send to JavaScript.
-    Events("onChange")
-
-    // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      return "Hello world! 👋"
+    public func definition() -> ModuleDefinition {
+        Name("ExpoTappayLinePay")
+        
+        Function("isLinePayAvailable") {
+            return TPDLinePay.isLinePayAvailable()
+        }
+        
+        Function("installLineApp") {
+            TPDLinePay.installLineApp()
+        }
+        
+        Function("setup") {(appId: Int32, appKey: String, serverType: String) -> Void in
+            let serverType: TPDServerType = (serverType == "production") ? .production : .sandBox
+            TPDSetup.setWithAppId(appId, withAppKey: appKey, with: serverType)
+        }
+        
+        Function("setupLine") {(callbackUrl: String) -> Void in
+            linePay = TPDLinePay.setup(withReturnUrl: callbackUrl)
+        }
+        
+        AsyncFunction("getPrime") { (promise: Promise) in
+            if (linePay != nil) {
+                linePay?
+                    .onSuccessCallback{(Prime) in
+                        debugPrint("Prime: \(Prime!)")
+                        promise.resolve(Prime)
+                    }
+                    .onFailureCallback{(status, msg) in
+                        debugPrint("status : \(status), msg : \(msg)")
+                        promise.reject(String(status), msg)
+                    }
+                    .getPrime()
+            }
+        }
+        
+        AsyncFunction("redirect") {(paymentUrl: String, promise: Promise) in
+            if (linePay != nil) {
+                DispatchQueue.main.async {
+                    let viewController = UIViewController()
+                    linePay?.redirect(
+                        paymentUrl,
+                        with: viewController,
+                        completion: { (result) in
+                            debugPrint("stauts : \(result.status), \(result)")
+                            promise.resolve([
+                                "status": result.status,
+                                "recTradeId": result.recTradeId!,
+                                "orderNumber": result.orderNumber!,
+                                "bankTransactionId": result.bankTransactionId!
+                            ])
+                        }
+                    )
+                }
+            } else {
+                promise.reject("NOT_READY", "PLEASE SETUP LINE PAY FIRST.")
+            }
+        }
     }
-
-    // Defines a JavaScript function that always returns a Promise and whose native code
-    // is by default dispatched on the different thread than the JavaScript runtime runs on.
-    AsyncFunction("setValueAsync") { (value: String) in
-      // Send an event to JavaScript.
-      self.sendEvent("onChange", [
-        "value": value
-      ])
-    }
-
-    // Enables the module to be used as a native view. Definition components that are accepted as part of the
-    // view definition: Prop, Events.
-    View(ExpoTappayLinePayView.self) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { (view: ExpoTappayLinePayView, prop: String) in
-        print(prop)
-      }
-    }
-  }
 }

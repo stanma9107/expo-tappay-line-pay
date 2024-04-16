@@ -1,6 +1,6 @@
 {
   "name": "expo-tappay-line-pay",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Integrate Tappay Line Pay to Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -28,7 +28,9 @@
   "author": "Stan <lol97554@gmail.com> (https://github.com/stanma9107)",
   "license": "MIT",
   "homepage": "https://github.com/stanma9107/expo-tappay-line-pay#readme",
-  "dependencies": {},
+  "dependencies": {
+    "expo-tappay-direct": "^1.0.2"
+  },
   "devDependencies": {
     "@types/react": "^18.0.25",
     "expo-module-scripts": "^3.4.1",

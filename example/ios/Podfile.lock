@@ -18,8 +18,11 @@ PODS:
     - React-NativeModulesApple
     - React-RCTAppDelegate
     - ReactCommon/turbomodule/core
-  - ExpoTappayLinePay (0.1.0):
+  - ExpoTappayDirect (1.0.2):
     - ExpoModulesCore
+  - ExpoTappayLinePay (0.1.1):
+    - ExpoModulesCore
+    - ExpoTappayDirect
   - FBLazyVector (0.73.6)
   - FBReactNativeSpec (0.73.6):
     - RCT-Folly (= 2022.05.16.00)
@@ -1084,6 +1087,7 @@ DEPENDENCIES:
   - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
+  - ExpoTappayDirect (from `../node_modules/expo-tappay-direct/ios`)
   - ExpoTappayLinePay (from `../../ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
@@ -1158,6 +1162,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-keep-awake/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core"
+  ExpoTappayDirect:
+    :path: "../node_modules/expo-tappay-direct/ios"
   ExpoTappayLinePay:
     :path: "../../ios"
   FBLazyVector:
@@ -1263,7 +1269,8 @@ SPEC CHECKSUMS:
   ExpoFileSystem: eecaf6796aed0f4dd20042dc2ca2cac6c4bc1185
   ExpoKeepAwake: 0f5cad99603a3268e50af9a6eb8b76d0d9ac956c
   ExpoModulesCore: 61dc57c6e2a35f2f84baf488146db624e03af4cd
-  ExpoTappayLinePay: 476303591684cf25ccec80c83d291b4ba1400b56
+  ExpoTappayDirect: fa95c25785d0477c5262fe925bf2c25bf2cf1da2
+  ExpoTappayLinePay: a4baac6821f4629e69368947f3c5b03f9bc01140
   FBLazyVector: f64d1e2ea739b4d8f7e4740cde18089cd97fe864
   FBReactNativeSpec: 9f2b8b243131565335437dba74923a8d3015e780
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9

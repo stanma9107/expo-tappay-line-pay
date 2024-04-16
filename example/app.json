@@ -30,7 +30,8 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "../app.plugin.js"
+      "../app.plugin.js",
+      "expo-tappay-direct"
     ]
   }
 }

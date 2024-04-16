@@ -1,6 +1,7 @@
 import ExpoModulesCore
 import TPDirect
 
+
 var linePay: TPDLinePay? = nil
 
 public class ExpoTappayLinePayModule: Module {

@@ -4,6 +4,11 @@
 npx expo install expo-tappay-line-pay
 ```
 ## Prerequisites
+- Please install `expo-tappay-direct` in your project, becasue it is a dependency of this package
+```bash
+npx expo install expo-tappay-direct
+```
+
 - Please add the following config in your app.json
 ```json
 {

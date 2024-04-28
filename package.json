@@ -1,6 +1,6 @@
 {
   "name": "expo-tappay-line-pay",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Integrate Tappay Line Pay to Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
